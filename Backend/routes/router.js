@@ -36,7 +36,7 @@ route.patch("/:id",async(req,res)=>{
     
     try {
         
-        let data = await Postmodel.findByIdAndUpdate(id,req.body);
+        let data = await Postmodel.findByIdAndUpdate({_id:id},req.body);
         
         res.status(200).send(data)
         
@@ -52,7 +52,7 @@ route.delete("/:id",async(req,res)=>{
     
     try {
         
-        let data = await Postmodel.findByIdAndDelete(id);
+        let data = await Postmodel.findByIdAndDelete({_id:id});
         
         res.status(200).send(data)
         

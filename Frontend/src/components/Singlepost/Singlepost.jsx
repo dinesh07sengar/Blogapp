@@ -6,10 +6,23 @@ import { MdAutoDelete } from "react-icons/md"
 import {FcShare} from "react-icons/fc"
 import {FaComments} from "react-icons/fa"
 import { Link, useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Customthunk } from '../../redux/Action'
 
 export const Singlepost = () => {
     const location = useLocation()
     let ele = location.state
+    const isAuth = useSelector((state) => state.isAuth)
+    let dispatch =useDispatch()
+
+    const handledelete=()=>{
+        if(isAuth){
+            dispatch(Customthunk("delete",null,ele._id))
+
+        }
+
+    }
+
     return (
         <Box p={"2%"}>
             
@@ -39,7 +52,7 @@ export const Singlepost = () => {
                                 </MenuButton>
                                 <MenuList>
                                     <Link to="/create" state={ele}><MenuItem icon={<FiEdit />}>edit post</MenuItem></Link>
-                                    <MenuItem icon={<MdAutoDelete />}>delete post</MenuItem>
+                                    <MenuItem icon={<MdAutoDelete />} onClick={handledelete}>delete post</MenuItem>
 
                                 </MenuList>
                             </Menu>

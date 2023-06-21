@@ -41,7 +41,7 @@ const login = () => {
 export const Customthunk = (method, val, id) => {
     return (dispatch) => {
         const Getdata = (dispatch) => {
-            axios.get("http://localhost:4800")
+            axios.get("https://blogs-9eip.onrender.com")
                 .then((d) => {
                     console.log(d.data)
                     dispatch(datasuccess(d.data))
@@ -53,7 +53,8 @@ export const Customthunk = (method, val, id) => {
                 })
         }
         const Mydata = (dispatch) => {
-            axios.get("http://localhost:4800/posts", {
+            let token = localStorage.getItem("vtoken");
+            axios.get("https://blogs-9eip.onrender.com/posts", {
                 headers: {
                     "auth": token
                 }
@@ -69,7 +70,7 @@ export const Customthunk = (method, val, id) => {
                 })
         }
         const Resgister = (dispatch, data) => {
-            axios.post("http://localhost:4800/register", data)
+            axios.post("https://blogs-9eip.onrender.com/register", data)
 
                 .then((d) => {
                     console.log(d)
@@ -78,11 +79,11 @@ export const Customthunk = (method, val, id) => {
                     console.log(err)
                 })
         }
-        const login = (dispatch,data) => {
-            axios.post("http://localhost:4800/login", data)
+        const loginfn = (dispatch,data) => {
+            axios.post("http://localhost:4900/login", data)
                 .then((d) => {
                     console.log(d)
-                    localStorage.setItem("token", d.token)
+                    localStorage.setItem("vtoken", d.data.token)
                     dispatch(login())
                 })
                 .catch((err) => {
@@ -91,7 +92,12 @@ export const Customthunk = (method, val, id) => {
 
         }
         const Postdata = (dispatch, data) => {
-            axios.post("http://localhost:4800/posts", data)
+            let token = localStorage.getItem("vtoken");
+            axios.post("https://blogs-9eip.onrender.com/posts", data, {
+                headers: {
+                    "auth": token
+                }
+            })
                 .then((d) => {
                     console.log(d)
                     dispatch(posted())
@@ -102,7 +108,8 @@ export const Customthunk = (method, val, id) => {
                 })
         }
         const updatedata = (dispatch, id, data) => {
-            axios.patch(`http://localhost:4800/posts/${id}`, data, {
+            let token = localStorage.getItem("vtoken");
+            axios.patch(`https://blogs-9eip.onrender.com/posts/${id}`, data, {
                 headers: {
                     "auth": token
                 }
@@ -118,7 +125,12 @@ export const Customthunk = (method, val, id) => {
                 })
         }
         const Deletedata = (dispatch, id) => {
-            axios.delete(`http://localhost:4800/posts/${id}`)
+            let token = localStorage.getItem("vtoken");
+            axios.delete(`https://blogs-9eip.onrender.com/posts/${id}`, {
+                headers: {
+                    "auth": token
+                }
+            })
                 .then((d) => {
                     console.log(d)
                     dispatch(deleted())
@@ -145,7 +157,7 @@ export const Customthunk = (method, val, id) => {
             mydata(dispatch)
         }
         else if(method==="login"){
-            login(dispatch,val)
+            loginfn(dispatch,val)
         }
         else if(method==="register"){
             Resgister(dispatch,val)

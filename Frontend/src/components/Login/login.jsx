@@ -21,22 +21,28 @@ export const Login = () => {
   const[state,setstate]=useState(false)
   const dispatch=useDispatch()
   const handlechange=(e)=>{
+    console.log(e)
     let { name, value } = e.target
-    setstate({ ...data, [name]: value })
+    setdata({ ...data, [name]: value })
 
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target.form;
-    form.submit();
+  const handleSubmit = () => {
+    console.log("yha aya")
+   
     if(state){
-      dispatch(Customthunk("register",data,null))
+      console.log(" ab yha aya")
+      let data1 = {...data}
       setdata({name:"",email:"",password:""})
+
+      dispatch(Customthunk("register",data1,null))
+      // setdata({name:"",email:"",password:""})
     }
     else{
       let data1 = {email:data.email,password:data.password}
+      console.log(data1)
+      // setdata({name:"",email:"",password:""})
       dispatch(Customthunk("login",data1,null))
-      setdata({name:"",email:"",password:""})
+      // setdata({name:"",email:"",password:""})
     }
     
 
@@ -65,19 +71,19 @@ export const Login = () => {
               p={{ base: 5, sm: 10 }}
             >
               <VStack spacing={4} w="100%">
-                <form style={{width:"100%"}}>
+                
                   {state?<>
-                <FormLabel>FullName</FormLabel>
+                <FormLabel ml={"-75%"} mb={"-0.5%"}>FullName</FormLabel>
                   <Input rounded="md" type="text" value={data.name}  name='name' onChange={handlechange}  />
                   </>:null}
                 
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel ml={"-75%"} mb={"-0.5%"}>Email</FormLabel>
                   <Input rounded="md" type="email" value={data.email}  name='email' onChange={handlechange}  />
                 
                 
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel ml={"-75%"} mb={"-0.5%"}>Password</FormLabel>
                   <Input rounded="md" type="password" value={data.password}  name='password' onChange={handlechange} />
-                  </form>
+                 
                 
               </VStack>
               <VStack w="100%">
