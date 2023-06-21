@@ -10,7 +10,7 @@ export const Navbar = () => {
         <Image src='https://rb.gy/fvf1l' alt='logo' ml={"10px"} />
         <Spacer />
         
-        <Link to={"/"}><Heading fontSize={"large"} mr={"20px"} ml={"1050px"}>Home</Heading></Link>
+        <Link to={"/"}><Heading fontSize={"large"} mr={"20px"} ml={["80px,400px,800px"]}>Home</Heading></Link>
         <Link to={"/create"}><Heading fontSize={"large"} mr={"20px"}>Create</Heading></Link>
         <Link to={"/post"}><Heading fontSize={"large"} mr={"20px"}>Mypost</Heading></Link>
         <Link to={"/login"}><Heading fontSize={"large"} mr={"20px"}>Login</Heading></Link>
