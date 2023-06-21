@@ -15,7 +15,8 @@ import {
     Flex,
     Text,
     Icon,
-    Divider
+    useToast,
+    
 } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
 import { Customthunk } from '../../redux/Action';
@@ -24,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export const Createpost = () => {
     const [state, setstate] = useState({ image: "", user: "", Headline: "", desc: "" })
     let dispatch = useDispatch()
+    const toast = useToast()
     const location = useLocation()
     let ele = location.state
 
@@ -46,6 +48,12 @@ export const Createpost = () => {
             }
 
 
+        }else{
+            toast({
+                title:  "Plzz login first",
+                status: error,
+                isClosable: true,
+              })
         }
 
     }
