@@ -80,7 +80,7 @@ export const Customthunk = (method, val, id) => {
                 })
         }
         const loginfn = (dispatch,data) => {
-            axios.post("http://localhost:4900/login", data)
+            axios.post("https://blogs-9eip.onrender.com/login", data)
                 .then((d) => {
                     console.log(d)
                     localStorage.setItem("vtoken", d.data.token)
