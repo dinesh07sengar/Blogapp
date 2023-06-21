@@ -1,0 +1,10 @@
+export const POSTDATA_SUCCESSFULL = "POSTDATA_SUCCESSFULL"
+export const POSTDATA_FAIL = "POSTDATA_Fail"
+export const GETDATA_SUCCESSFULLY = "GETDATA_SUCCESSFULLY"
+export const GETDATA_FAIL = "GETDATA_FAIL"
+export const PATCHDATA_SUCCESSFULLY = "petchdata_success"
+export const PATCHDATA_Fail = "petchdata_fail"
+export const Delete_SUCCESSFULLY = "Delete_success"
+export const USER_DATA = "USER_DATA"
+export const LOGIN_SUCCESS= "LOGIN_success"
+

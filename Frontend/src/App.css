@@ -1,0 +1,42 @@
+
+.slideshow {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.slide {
+  flex: 1 0 100%;
+  position: relative;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+
+.slide img {
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.navimage{
+  width: 10%;
+  background-color: aqua;
+}
+.slide h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  font-size: 40px;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+
+
+
+
+
